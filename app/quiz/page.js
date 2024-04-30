@@ -4,6 +4,7 @@ import { auth, db } from "../../firebaseconfig.js";
 import { increment } from "firebase/firestore"
 import { collection, getDoc, setDoc, doc, updateDoc } from "firebase/firestore";
 import { useRouter } from 'next/navigation'
+import Navbar from '@/components/navbar/navbar.js';
 
 
 const QuizPage = () => {
@@ -27,25 +28,40 @@ const QuizPage = () => {
   const questions = [
     {
       id: 1,
-      question: "What is the capital of France?",
+      question: "How was your day?",
       options: [
-        { text: "Paris", score: 3 },
-        { text: "London", score: 0 },
-        { text: "Berlin", score: 0 },
-        { text: "Rome", score: 0 }
+        { text: "Happy ", score: 3 },
+        { text: "Neutral", score: 2 },
+        { text: "Sad", score: 1 },
       ]
     },
     {
       id: 2,
-      question: "Which planet is known as the Red Planet?",
+      question: "Did you get 6 or more hours of sleep today?",
       options: [
-        { text: "Mars", score: 5 },
-        { text: "Venus", score: 0 },
-        { text: "Mercury", score: 0 },
-        { text: "Jupiter", score: 0 }
+        { text: "Yes", score: 5 },
+        { text: "No", score: 2 },
+       
       ]
     },
-    // Add more questions here...
+    {
+      id: 3,
+      question: "Did you have 3 meals today?",
+      options: [
+        { text: "Yes", score: 5 },
+        { text: "No", score: 2 },
+       
+      ]
+    },
+    {
+      id: 4,
+      question: "Did you exercise today?",
+      options: [
+        { text: "Yes", score: 5 },
+        { text: "No", score: 2 },
+       
+      ]
+    },
   ];
 
   // Function to handle user selection
@@ -90,6 +106,8 @@ const QuizPage = () => {
   };
 
   return (
+    <div>
+      <Navbar />
     <div className="max-w-2xl mx-auto mt-8 p-6 bg-gray-100 rounded-lg shadow-lg text-black">
       <h1 className="text-3xl font-bold mb-6">Quiz</h1>
       {questions.map(question => (
@@ -116,6 +134,7 @@ const QuizPage = () => {
       ))}
       <button onClick={calculateTotalPoints} className="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:bg-blue-600">Submit</button>
       <p className="mt-4">Total Points: {totalPoints}</p>
+    </div>
     </div>
   );
 };

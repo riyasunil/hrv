@@ -4,6 +4,7 @@ import { Button } from "@mui/material";
 import { useRouter } from 'next/navigation'; // Update import
 import Image from 'next/image';
 import { auth } from "@/firebaseconfig";
+import Navbar from "@/components/navbar/navbar";
 
 export default function Home() {
 
@@ -19,6 +20,9 @@ console.log(user)    } else {
     const handleClick = () => {
         router.push("/checkin");
     }
+    const handleClickyoga = () => {
+        router.push("/yoga");
+    }
 
     const handleClickJournal = () => {
         router.push("/prompt");
@@ -31,21 +35,26 @@ console.log(user)    } else {
     const handleClickQuiz = () => {
         router.push("/quiz");
     }
+    const handleClickHrv = () => {
+        router.push("/hrvpage");
+    }
 
     return (
+        <div>
+            <Navbar />
         <div className="bg-white h-screen text-black flex flex-col justify-center items-center">
-            <Button className="mt-2" variant="contained" onClick={handleClick} style={{ width: '20%' }} >
+            <Button className="mt-2" variant="contained" onClick={handleClickHrv} style={{ width: '20%' }} >
                 HRV COHERENCE
             </Button>
             <Button className="mt-2" variant="contained" style={{ width: '20%' }} >
                 BLOOD PRESSURE VARIABILITY
             </Button>
-            <Button className="mt-2" variant="contained" style={{ width: '20%' }}>
+            <Button className="mt-2" variant="contained" onClick={handleClickyoga} style={{ width: '20%' }}>
                 STRESS RELIEF YOGA
             </Button>
-            <Button className="mt-2" variant="contained" style={{ width: '20%' }} onClick={handleClickJournal} >
+            {/* <Button className="mt-2" variant="contained" style={{ width: '20%' }} onClick={handleClickJournal} >
                 CREATE JOURNAL
-            </Button>
+            </Button> */}
             {/* <Button className="mt-2" variant="contained" style={{ width: '20%' }} onClick={handleClickViewJournal} >
                 VIEW JOURNAL
             </Button> */}
@@ -54,6 +63,7 @@ console.log(user)    } else {
                     Quiz
                 </Button>
             </div>
+        </div>
         </div>
     );
 }

@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { auth, db } from "../../firebaseconfig.js";
 import { collection, getDoc, doc } from "firebase/firestore";
 import Image from 'next/image'
+import Navbar from '@/components/navbar/navbar.js';
+import { useRouter } from 'next/navigation'
 
 export default function RewardPage() {
     const [currentUser, setCurrentUser] = useState(null);
     const [userPoints, setUserPoints] = useState(0);
     const [message, setMessage] = useState("");
     const [image, setImage] = useState("");
+    const router = useRouter()
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -34,6 +37,10 @@ export default function RewardPage() {
         }
     };
 
+    const handleclick = () =>{
+        router.push("/checkin")
+    }
+
     useEffect(() => {
         if (userPoints >= 5) {
             setMessage(" Looks like you've had a tough week 😕. Remember, every seed needs nurturing to grow. Take some time for self-care. Try out our features like HRV coherence and BPV for better results.Let's aim for better days ahead🤗");
@@ -55,12 +62,17 @@ export default function RewardPage() {
 // https://ibb.co/LtjQs2V
 // https://ibb.co/qRc5d4p
     return (
+        <div>
+
+       <Navbar />
         <div className="bg-white h-screen flex flex-col justify-center items-center text-black ">
     <p className="text-xl mb-2 px-4">Your total points: {userPoints}</p>
     <div className="flex flex-col items-center w-9/12">
       <h3 className="text-xl mb-2 px-4">{message}</h3>
       <img src={image} alt="Reward" className="w-64 h-64 object-cover rounded-lg shadow-lg" width={300} height={300}/>
+      {userPoints < 100 && <button onClick={handleclick} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Deep Breathing Session</button>}
     </div>
+  </div>
   </div>
     );
 }
