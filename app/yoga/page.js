@@ -5,7 +5,7 @@ export default function YogaPage() {
     return (
         <div>
             <Navbar />
-        <div className="bg-white text-black grid place-items-center grid-cols-3 h-full gap-10 pt-10 pb-10">
+        <div className="bg-background-color text-black grid place-items-center grid-cols-3 h-full gap-10 pt-10 pb-10">
             <Yogacard 
              name={"Stick Pose (Yastikasana)"}
              imageUrl={"https://www.realsimple.com/thmb/b736KtIWk9WGyJvKpQ6iAcXB2yU=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/RS_YogaExercises_Stress_1-676524353ac7499fa6225a47ecb08810.jpg"}

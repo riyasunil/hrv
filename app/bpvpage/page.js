@@ -3,7 +3,9 @@ import Navbar from '@/components/navbar/navbar';
 import React, { useState } from 'react';
 
 export default function Hrvpage() {
-    const [hrvData, setHrvData] = useState(null);
+    const [dbp, setdbp] = useState(null);
+    const [sbp, setsbp] = useState(null);
+
 
 
     const handleFileUpload = async (event) => {
@@ -17,7 +19,9 @@ export default function Hrvpage() {
                 body: formData
             });
             const data = await response.json();
-            setHrvData(data);
+            setdbp(data.DBP);
+            setsbp(data.SBP);
+           
         } catch (error) {
             console.error('Error uploading file and fetching HRV data:', error);
         }
@@ -30,9 +34,6 @@ export default function Hrvpage() {
         document.getElementById('fileInput').click();
     };
 
-    console.log("hrv" , hrvData)
-
-
     return (
         <div>
             <Navbar />
@@ -41,17 +42,15 @@ export default function Hrvpage() {
                 <input type="file" id="fileInput" className="hidden" onChange={handleFileUpload} />
                 <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Upload CSV File</button>
             </form>
-            {hrvData ? (
+            {dbp && sbp ? (
                 <div className="mt-4">
                     <h2 className="text-lg font-bold">Heart Rate Variability Data:</h2>
-                    {/* <p></p> */}
-                    <p>BPM: {hrvData.bpm}</p>
-                    <p>IBI: {hrvData.ibi}</p>
-                    <p>SDNN: {hrvData.sdnn}</p>
+                    <p>DBP: {dbp}</p>
+                    <p>SBP: {sbp}</p>
                     
                 </div>
             ) : (
-                <p className="mt-4">Select a CSV file to upload and evaluate HRV data</p>
+                <p className="mt-4">Select a CSV file to upload and evaluate BPV </p>
             )}
         </div>
         </div>
