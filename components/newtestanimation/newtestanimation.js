@@ -51,35 +51,62 @@ export default function TestAnimation() {
   };
 
   return (
-    <div>
-      <div style={{ width: '100%', height: 300, position: 'relative' }}>
-        {Array.from({ length: 16 }, (_, i) => i).map((index) => (
-          <React.Fragment key={index}>
-            {index === 3 || index === 7 || index === 11 || index === 15 ? (
-              <div style={{ position: 'absolute', bottom: 0, left: `${(index % 4) * 25}%` }}>
-                {renderAnimatedIcon(index)}
-              </div>
-            ) : index === 0 || index === 4 || index === 8 || index === 12 ? (
-              <div style={{ position: 'absolute', left: 0, top: `${(index % 4) * 25}%` }}>
-                {renderAnimatedIcon(index)}
-              </div>
-            ) : index === 1 || index === 5 || index === 9 || index === 13 ? (
-              <div style={{ position: 'absolute', top: 0, left: `${(index % 4) * 25}%` }}>
-                {renderAnimatedIcon(index)}
-              </div>
-            ) : (
-              <div style={{ position: 'absolute', right: 0, top: `${(index % 4) * 25}%` }}>
-                {renderAnimatedIcon(index)}
-              </div>
-            )}
-          </React.Fragment>
-        ))}
-        {isAnimating && (
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
-            <h2 style={{ fontSize: 20 }}>{texts[textIndex]}</h2>
-          </div>
-        )}
+    <div style={{ width: '100%', height: 500, position: 'relative' }}>
+      <div style={{ width: '100%', height: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(0)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(1)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(2)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(3)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(4)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(5)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(6)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(7)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(8)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(9)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(10)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(11)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(12)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(13)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(14)}
+        </div>
+        <div style={{ position: 'relative' }}>
+          {renderAnimatedIcon(15)}
+        </div>
       </div>
+      {isAnimating && (
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          <h2 style={{ fontSize: 20 }}>{texts[textIndex]}</h2>
+        </div>
+      )}
       <button onClick={!isAnimating ? startAnimation : null} disabled={isAnimating}>
         Start Session
       </button>
