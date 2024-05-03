@@ -3,6 +3,10 @@ import Navbar from '@/components/navbar/navbar';
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, setDoc, doc, updateDoc,query,where, Timestamp } from "firebase/firestore";
 import { auth, db } from "../../firebaseconfig.js";
+import "./bpv.css"
+import { Button } from '@mui/material';
+import { FaInfoCircle } from 'react-icons/fa';
+import { useRouter } from 'next/navigation';
 
 
 export default function Hrvpage() {
@@ -10,7 +14,7 @@ export default function Hrvpage() {
     const [sbp, setsbp] = useState(null);
     const [currentUser, setCurrentUser] = useState(null);
 
-
+    const router = useRouter();
     useEffect(() => {
         auth.onAuthStateChanged(function(user) {
             if (user) {
@@ -49,6 +53,9 @@ export default function Hrvpage() {
         document.getElementById('fileInput').click();
     };
 
+    const handleinst = () =>{
+        router.push("/hrvinst")
+    }
     const storeBPVDataInFirebase = async (userId) => {
         const today = new Date().toLocaleDateString();
         try {
@@ -63,7 +70,7 @@ export default function Hrvpage() {
     return (
         <div>
             <Navbar />
-        <div className=" p-4 border rounded-lg shadow-lg bg-white text-black h-screen flex justify-center items-center flex-col">
+        <div className="bpvbg p-4 border rounded-lg shadow-lg bg-white text-black h-screen flex justify-center items-center flex-col">
             <form onSubmit={handleSubmit}>
                 <input type="file" id="fileInput" className="hidden" onChange={handleFileUpload} />
                 <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Upload CSV File</button>
@@ -76,8 +83,13 @@ export default function Hrvpage() {
                     
                 </div>
             ) : (
-                <p className="mt-4">Select a CSV file to upload and evaluate BPV </p>
-            )}
+<div className='flex flex-row items-center justify-center'>
+                <p className=" text-white">Select a CSV file to upload and evaluate BPV data</p>
+
+                     <Button onClick={handleinst}  className="flex items-center">
+                            <FaInfoCircle className="mr-2" size={20} /> {/* Icon */}
+                        </Button>
+                </div>            )}
         </div>
         </div>
     );

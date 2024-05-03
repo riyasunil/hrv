@@ -66,7 +66,7 @@ export default function Navbar() {
     <div>
     <a href="/reward" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500 flex flex-row" aria-current="page">
             <Image src="/leaf.png" width = {20} height={20}/>
-            {userPoints}
+         
           </a>
     </div>
   </div>

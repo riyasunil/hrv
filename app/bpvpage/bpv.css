@@ -1,0 +1,6 @@
+.bpvbg{
+    background-image: url("../../public/hearbg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}

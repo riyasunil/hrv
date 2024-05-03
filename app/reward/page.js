@@ -92,13 +92,13 @@ const RewardPage = () => {
             <div className="bg-white h-screen flex flex-col justify-center items-center text-black">
                 <p className="text-xl  px-4 mb-20 font-bold">Your total points: {userPoints}</p>
                 <div className="flex justify-center items-center w-full gap-20">
-                    {<motion.div animate={{ scale: userPoints >= 5 && userPoints < 10 ? 1.8 : 1 }} className="mr-2"><Image src="/seedling.svg" alt="Seedling" width={100} height={100} /></motion.div>}
-                    { <motion.div animate={{ scale: userPoints >= 10 && userPoints < 20 ? 1.8 : 1 }} className="mr-2"><Image src="/leaf.svg" alt="Leaf" width={100} height={100} /></motion.div>}
-                    { <motion.div animate={{ scale: userPoints >= 20 && userPoints < 30 ? 1.8 : 1 }} className="mr-2"><Image src="/tree2.svg" alt="Tree" width={100} height={100} /></motion.div>}
-                    {<motion.div animate={{ scale: userPoints >= 30 ? 1.8 : 1 }} className="mr-2"><Image src="/fruittree.svg" alt="Fruit Tree" width={100} height={100} /></motion.div>}
+                    {<motion.div animate={{ scale: userPoints >= 0 && userPoints < 10 ? 1.8 : 1 }} className="mr-2"><Image src="/seedling.svg" alt="Seedling" width={100} height={100} /></motion.div>}
+                    { <motion.div animate={{ scale: userPoints >= 20 && userPoints < 30 ? 1.8 : 1 }} className="mr-2"><Image src="/leaf.svg" alt="Leaf" width={100} height={100} /></motion.div>}
+                    { <motion.div animate={{ scale: userPoints >= 30 && userPoints < 40 ? 1.8 : 1 }} className="mr-2"><Image src="/tree2.svg" alt="Tree" width={100} height={100} /></motion.div>}
+                    {<motion.div animate={{ scale: userPoints >= 40 ? 1.8 : 1 }} className="mr-2"><Image src="/fruittree.svg" alt="Fruit Tree" width={100} height={100} /></motion.div>}
                 </div>
                 <div className="text-xl mb-2 px-4 mt-20 w-1/2" >{message}</div>
-                {userPoints < 100 && <button onClick={handleclick} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Deep Breathing Session</button>}
+                {/* {userPoints < 100 && <button onClick={handleclick} className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Start Deep Breathing Session</button>} */}
             </div>
         </div>
     );

@@ -3,8 +3,11 @@ import Navbar from '@/components/navbar/navbar';
 import { auth, db } from "../../firebaseconfig.js";
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
+import "./hrv.css"
+import { FaInfoCircle } from 'react-icons/fa'
 
 import { collection, getDocs, setDoc, doc, updateDoc,query,where, Timestamp } from "firebase/firestore";
+import { Button } from '@mui/material';
 
 
 export default function Hrvpage() {
@@ -64,14 +67,19 @@ export default function Hrvpage() {
         router.push("/checkin")
     }
 
+    const handleinst = () =>{
+        router.push("/hrvinst")
+    }
+
     return (
         <div>
         <Navbar />
-        <div className="p-4 border rounded-lg shadow-lg bg-white text-black h-screen flex justify-center items-center flex-col">
+        <div className="hrvbox p-4 border rounded-lg shadow-lg bg-white text-black h-screen flex justify-center items-center flex-col">
             <form onSubmit={handleSubmit}>
                 <input type="file" id="fileInput" className="hidden" onChange={handleFileUpload} />
                 <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-lg">Upload CSV File</button>
             </form>
+           
             {hrvData ? (
                 <div className="mt-4">
                     <h2 className="text-lg font-bold">Heart Rate Variability Data:</h2>
@@ -94,7 +102,14 @@ export default function Hrvpage() {
 
                 </div>
             ) : (
-                <p className="mt-4">Select a CSV file to upload and evaluate HRV data</p>
+                <div className='flex flex-row items-center justify-center'>
+                <p className=" text-white">Select a CSV file to upload and evaluate HRV data</p>
+
+                     <Button onClick={handleinst}  className="flex items-center">
+                            <FaInfoCircle className="mr-2" size={20} /> {/* Icon */}
+                        </Button>
+                </div>
+                
             )}
         </div>
     </div>

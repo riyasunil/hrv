@@ -33,9 +33,9 @@ const QuizPage = () => {
       id: 1,
       question: "How was your day?",
       options: [
-        { text: "Happy ", score: 3 },
+        { text: "Happy ", score: 5 },
         { text: "Neutral", score: 2 },
-        { text: "Sad", score: 1 },
+        { text: "Sad", score: 0 },
       ]
     },
     {
